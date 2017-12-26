@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+    <button onclick="ajax()">btn</button>
+    <script>
+
+        function ajax(){
+            var xmlHttpReq = null;
+            if(window.ActiveXObject){
+                xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            else if(window.XMLHttpRequest){
+                xmlHttpReq = new XMLHttpRequest();
+            }
+            if(xmlHttpReq!=null){
+                xmlHttpReq.open("GET","1.txt",true);
+                xmlHttpReq.send();
+            }
+            xmlHttpReq.onreadystatechange = function () {
+                if(xmlHttpReq.readyState == 4){
+                    if(xmlHttpReq.status == 200){
+                        console.log(xmlHttpReq.responseText)
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
